@@ -1,23 +1,801 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Portfolio</title>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lin Jun Ji | Cybersecurity Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --navy:    #0a0f1e;
+      --dark:    #0d1526;
+      --mid:     #1a2744;
+      --accent:  #00d4ff;
+      --accent2: #0077b6;
+      --text:    #e8edf5;
+      --muted:   #8a9ab5;
+      --white:   #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--navy);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .logo-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 50%, rgba(0,119,182,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,212,255,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Animated grid */
+    #home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      animation: gridPan 20s linear infinite;
+    }
+
+    @keyframes gridPan {
+      from { background-position: 0 0; }
+      to   { background-position: 60px 60px; }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.4s forwards;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, var(--accent), #7ef9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      max-width: 580px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.6s forwards;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.8s forwards;
+    }
+
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid rgba(0,212,255,0.4);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      background: rgba(0,212,255,0.05);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 1s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,212,255,0.35);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(0,212,255,0.4);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(0,212,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION BASE ──────────────────────────────────── */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ─────────────────────────────────────────── */
+    #about {
+      background: var(--dark);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1000px;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 4px;
+      transform: translate(8px, 8px);
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      background: var(--mid);
+    }
+
+    /* Placeholder if no photo */
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--mid), var(--navy));
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border: 1px dashed rgba(0,212,255,0.2);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .photo-placeholder svg {
+      width: 48px; height: 48px;
+      opacity: 0.3;
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-body p strong {
+      color: var(--text);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .skill-item::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    /* ── PORTFOLIO / CERTS ─────────────────────────────── */
+    #portfolio {
+      background: var(--navy);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .card {
+      background: var(--dark);
+      border: 1px solid rgba(0,212,255,0.1);
+      border-radius: 6px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,212,255,0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: rgba(0,212,255,0.08);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ── BANNER ────────────────────────────────────────── */
+    .banner {
+      position: relative;
+      padding: 5rem 4rem;
+      background:
+        linear-gradient(135deg, rgba(0,10,30,0.92) 0%, rgba(0,30,60,0.85) 100%),
+        url('server-room.jpg') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 80% 50%, rgba(0,119,182,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .banner-content { position: relative; z-index: 1; max-width: 600px; }
+
+    .banner h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .banner p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(232,237,245,0.75);
+    }
+
+    /* ── CONTACT ───────────────────────────────────────── */
+    #contact {
+      background: var(--dark);
+    }
+
+    .contact-wrap {
+      max-width: 600px;
+    }
+
+    .contact-wrap p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 3px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .contact-link:hover {
+      background: rgba(0,212,255,0.08);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-link svg {
+      width: 18px; height: 18px;
+      fill: var(--accent);
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      padding: 2rem 4rem;
+      background: var(--navy);
+      border-top: 1px solid rgba(0,212,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer .logo-text { font-size: 0.8rem; color: var(--muted); }
+
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      #home { padding: 7rem 1.5rem 3rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-wrap { max-width: 220px; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .banner { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
 <body>
 
-<h1>Lin Jun Ji</h1>
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="logo">
+      <div class="logo-icon">CS<br>PORT</div>
+      <div class="logo-text">Cyber<br>Security<br>Portfolio</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<p>Cybersecurity Portfolio</p>
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-eyebrow">// Cybersecurity Portfolio</div>
+    <h1 class="hero-title">Lin Jun Ji<br><span>Red Team &amp; Defense</span></h1>
+    <p class="hero-sub">
+      Explore my industry certifications, technical projects, and expertise in securing
+      digital environments. Committed to proactive defense and ethical hacking.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">eJPT Certified</span>
+      <span class="badge">ISC2 CC</span>
+      <span class="badge">SOC Analyst Intern</span>
+      <span class="badge">CrowdStrike Falcon</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </section>
 
-<h2>Certifications</h2>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">// 01 — About Me</div>
+    <h2 class="section-title">Cyber Security Student</h2>
+    <div class="section-divider"></div>
 
-<ul>
-<li>eJPT</li>
-<li>ISC2 CC</li>
-<li>Fortinet Fundamentals</li>
-</ul>
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <!--
+          REPLACE THIS BLOCK with your photo:
+          <img src="your-photo.jpg" alt="Lin Jun Ji" class="about-photo" />
+        -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+          Drop your photo here<br/>
+          <code style="font-size:0.65rem;opacity:0.5;">your-photo.jpg</code>
+        </div>
+      </div>
 
+      <div class="about-body">
+        <p>
+          I am <strong>Lin Jun Ji</strong>, a Singapore-based Cybersecurity Student focused on
+          <strong>Red Teaming</strong> and proactive defense. Certified in <strong>eJPT</strong>
+          and <strong>ISC2 CC</strong>, I possess practical expertise as a SOC Analyst Intern
+          working with <strong>CrowdStrike Falcon</strong>.
+        </p>
+        <p>
+          My background merges hardware proficiency with enterprise network security, allowing me
+          to analyze system vulnerabilities and implement robust countermeasures. I am dedicated
+          to understanding complex infrastructures to effectively simulate real-world attacks and
+          strengthen organizational security postures.
+        </p>
+        <div class="skills-grid">
+          <span class="skill-item">Red Team Operations</span>
+          <span class="skill-item">Incident Response</span>
+          <span class="skill-item">Network Security</span>
+          <span class="skill-item">Vulnerability Analysis</span>
+          <span class="skill-item">CrowdStrike Falcon</span>
+          <span class="skill-item">Ethical Hacking</span>
+          <span class="skill-item">Hardware Security</span>
+          <span class="skill-item">SIEM / SOC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <!--
+      To use your server room image as background, update the CSS .banner rule:
+      background: linear-gradient(...), url('server-room.jpg') center/cover no-repeat;
+    -->
+    <div class="banner-content">
+      <h2>Secured Hacking</h2>
+      <p>
+        I specialize in identifying and mitigating complex security vulnerabilities through
+        rigorous technical analysis and proactive defense strategies.
+      </p>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-label">// 02 — Portfolio</div>
+    <h2 class="section-title">Projects &amp; Certifications</h2>
+    <div class="section-divider"></div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">eJPT Certification</div>
+        <p class="card-body">
+          Junior Penetration Tester certification by eLearnSecurity. Demonstrates practical
+          skills in network scanning, exploitation, and post-exploitation techniques.
+        </p>
+        <span class="card-tag">CERTIFICATION</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">ISC2 CC</div>
+        <p class="card-body">
+          Certified in Cybersecurity (CC) by ISC2. Covers foundational security principles,
+          network security, access control, and incident response.
+        </p>
+        <span class="card-tag">CERTIFICATION</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🦅</div>
+        <div class="card-title">SOC Analyst Internship</div>
+        <p class="card-body">
+          Hands-on experience monitoring and responding to security events using
+          CrowdStrike Falcon — endpoint detection, threat hunting, and alert triage.
+        </p>
+        <span class="card-tag">EXPERIENCE</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Network Penetration Testing</div>
+        <p class="card-body">
+          Conducted comprehensive network assessments, identifying misconfigurations and
+          exploitable vulnerabilities in enterprise-like lab environments.
+        </p>
+        <span class="card-tag">PROJECT</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Hardware Security Research</div>
+        <p class="card-body">
+          Explored hardware-level attack vectors and physical security of embedded systems,
+          bridging the gap between hardware proficiency and network security.
+        </p>
+        <span class="card-tag">RESEARCH</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚨</div>
+        <div class="card-title">Incident Response Simulations</div>
+        <p class="card-body">
+          Participated in tabletop exercises and CTF competitions to simulate real-world
+          cyber incidents, developing swift containment and remediation strategies.
+        </p>
+        <span class="card-tag">PROJECT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">// 03 — Contact</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-divider"></div>
+
+    <div class="contact-wrap">
+      <p>
+        Interested in collaborating, have an opportunity, or just want to connect?
+        Feel free to reach out through any of the platforms below.
+      </p>
+      <div class="contact-links">
+        <!-- Replace # with your actual profile URLs -->
+        <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/YOUR-INSTAGRAM" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="mailto:your@email.com" class="contact-link">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Email
+        </a>
+        <a href="https://github.com/YOUR-GITHUB" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#home" class="logo">
+      <div class="logo-icon" style="width:32px;height:32px;font-size:0.5rem;">CS<br>PORT</div>
+      <div class="logo-text" style="font-size:0.7rem;color:var(--muted);">Cyber Security<br>Portfolio</div>
+    </a>
+    <span class="footer-copy">© 2025 Lin Jun Ji — All rights reserved</span>
+  </footer>
+
+  <script>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Fade-in on scroll for cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .about-grid, .contact-wrap').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
-
 </html>
