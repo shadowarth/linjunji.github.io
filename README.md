@@ -1,4 +1,4 @@
-# Hi there, I'm [Your Name] 👋
+# Hi there, I'm Lin Jun Ji 👋
 
 ### 🚀 Cybersecurity Student & Aspiring Pentester
 
