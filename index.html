@@ -210,6 +210,52 @@
       .hack-banner{padding:2.5rem 1.2rem}
       footer{padding:1rem 1.2rem}
     }
+    
+    /* ── DESKTOP FIXES (Words & Images) ── */
+
+/* 1. Fix the cropped certificates for ALL screens so they fit fully */
+.port-card-img {
+  object-fit: contain !important; /* Forces the whole image to show */
+  padding: 10px; /* Adds a nice border area so certs don't touch the edges */
+}
+
+/* 2. Desktop-only increases (Screens wider than mobile) */
+@media(min-width: 721px) {
+  
+  /* Make the portfolio images larger */
+  .port-card-img { height: 280px; }
+  .port-card-img.tall { height: 340px; }
+  
+  /* Make the portfolio grid cards wider */
+  .port-grid {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  }
+
+  /* Make your profile picture bigger */
+  .photo-box { width: 220px; }
+  .photo-box img { width: 220px; height: 270px; }
+
+  /* --- Increase Font Sizes --- */
+  
+  /* Navigation */
+  .nav-links a { font-size: 1.1rem; }
+  .logo-label { font-size: 0.85rem; }
+
+  /* Home Page */
+  .home-hero p { font-size: 1.15rem; max-width: 1100px; }
+  .about-bio { font-size: 1.1rem; }
+
+  /* About Me Page */
+  .mission-block p { font-size: 1.1rem; }
+  .tl-role { font-size: 1.2rem; }
+  .tl-bullets li { font-size: 1rem; }
+  .edu-school { font-size: 1.2rem; }
+  .edu-points li { font-size: 1rem; }
+
+  /* Portfolio Page */
+  .port-card-title { font-size: 1.15rem; }
+  .port-card-text { font-size: 1rem; }
+}
   </style>
 </head>
 <body>
