@@ -1,3 +1,8 @@
+Here is the complete, updated `index.html` file with those width changes already applied.
+
+I bumped up the `max-width` on all the main containers to `1600px`. You can just copy this entire block of code, replace the contents of your current `index.html` file, and save it.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +57,8 @@
 
     /* ── HOME PAGE ── */
     .home-hero{
-      max-width:1100px;margin:0 auto;
+      max-width:1600px; /* Increased for wider desktop view */
+      margin:0 auto;
       padding:4rem 3rem 3rem;
     }
     .home-hero h1{
@@ -66,7 +72,8 @@
 
     /* About strip */
     .about-strip{
-      max-width:1100px;margin:0 auto;
+      max-width:1600px; /* Increased for wider desktop view */
+      margin:0 auto;
       padding:2.5rem 3rem 3rem;
     }
     .about-strip h2{
@@ -94,7 +101,11 @@
     .hack-banner p{font-size:.93rem;line-height:1.7;color:rgba(255,255,255,.82);max-width:480px}
 
     /* ── ABOUT ME PAGE ── */
-    .page-inner{max-width:1300px;margin:0 auto;padding:4rem 5rem}
+    .page-inner{
+      max-width:1600px; /* Increased for wider desktop view */
+      margin:0 auto;
+      padding:4rem 5rem;
+    }
 
     .mission-block{
       background:#fff;border-radius:8px;padding:2.5rem;
@@ -157,7 +168,11 @@
     .port-hero h1{font-size:2.6rem;font-weight:800;margin-bottom:.8rem}
     .port-hero p{font-size:.92rem;line-height:1.7;color:var(--muted);max-width:900px}
 
-    .port-inner{max-width:1100px;margin:0 auto;padding:3rem 3rem}
+    .port-inner{
+      max-width:1600px; /* Increased for wider desktop view */
+      margin:0 auto;
+      padding:3rem 3rem;
+    }
 
     .port-section-title{
       font-size:1.1rem;font-weight:700;color:var(--dark);letter-spacing:.05em;
@@ -214,15 +229,8 @@
 </head>
 <body>
 
-<!-- TOP STRIP -->
-
-<!-- NAV -->
 <nav>
   <div class="logo-wrap" onclick="showPage('home')">
-    <!-- 
-      ⚠ LOGO IMAGE: rename your logo file to "logo.png" and put it in the images/ folder.
-         Then swap the <svg> below with:  <img src="images/logo.png" class="logo-svg" alt="logo"/>
-    -->
     <svg class="logo-svg" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
       <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#0d1e3a" stroke-width="2.5"/>
       <rect x="18" y="20" width="14" height="11" rx="1.5" fill="#0d1e3a"/>
@@ -237,7 +245,6 @@
   </ul>
 </nav>
 
-<!-- ════════════ HOME PAGE ════════════ -->
 <div class="page active" id="page-home">
 
   <div class="home-hero">
@@ -249,28 +256,13 @@
     <h2>Cyber Security Student</h2>
     <div class="strip-rule"></div>
     <div class="about-row">
-
-      <!--
-        ⚠ PROFILE PHOTO
-        File name:  photo_2026-05-19_04-16-25.jpg
-        Folder:     images/
-        Full path:  images/photo_2026-05-19_04-16-25.jpg
-      -->
       <div class="photo-box">
         <img src="images/linjunji.jpg" alt="Lin Jun Ji"/>
       </div>
-
       <p class="about-bio">I am Lin Jun Ji, a Singapore-based Cybersecurity Student focused on Red Teaming and proactive defense. Certified in eJPT and ISC2 CC, I possess practical expertise as a SOC Analyst Intern working with CrowdStrike Falcon. My background merges hardware proficiency with enterprise network security, allowing me to analyze system vulnerabilities and implement robust countermeasures. I am dedicated to understanding complex infrastructures to effectively simulate real-world attacks and strengthen organizational security postures.</p>
     </div>
   </div>
 
-  <!--
-    ⚠ BANNER BACKGROUND
-    File name:  ai-generated-IMAGE.jpg
-    Folder:     images/
-    Full path:  images/ai-generated-IMAGE.jpg
-    (Already referenced in CSS above — just put the file in the images/ folder)
-  -->
   <div class="hack-banner">
     <div>
       <h2>Secured Hacking</h2>
@@ -278,11 +270,7 @@
     </div>
   </div>
 
-</div><!-- end home -->
-
-
-<!-- ════════════ ABOUT ME PAGE ════════════ -->
-<div class="page" id="page-about">
+</div><div class="page" id="page-about">
   <div class="page-inner">
 
     <div style="text-align:center;margin-bottom:25px;">
@@ -295,7 +283,6 @@
       <p>I am Lin Jun Ji, a Cybersecurity student at ITE Higher Nitec specializing in network defense and ethical hacking. My expertise spans from foundational security protocols to advanced threat intelligence, driven by a commitment to technical excellence. I focus on optimizing digital perimeters and safeguarding global infrastructure, transforming complex security challenges into robust solutions for a safer digital world.</p>
     </div>
 
-    <!-- EXPERIENCE -->
     <div class="section-head">Experience</div>
     <div class="timeline">
 
@@ -344,10 +331,7 @@
         </ul>
       </div>
 
-    </div><!-- end timeline -->
-
-    <!-- EDUCATION -->
-    <div class="section-head">Education</div>
+    </div><div class="section-head">Education</div>
     <div class="edu-grid">
 
       <div class="edu-card">
@@ -376,11 +360,7 @@
     </div>
 
   </div>
-</div><!-- end about -->
-
-
-<!-- ════════════ PORTFOLIO PAGE ════════════ -->
-<div class="page" id="page-port">
+</div><div class="page" id="page-port">
 
   <div class="port-hero">
     <div class="tagline">Learning is endless</div>
@@ -390,15 +370,10 @@
 
   <div class="port-inner">
 
-    <!-- CERTIFICATIONS -->
     <div class="port-section-title">Certifications</div>
     <div class="port-grid">
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/eJPT (eLearnSecurity Junior Penetration Tester) 2026.png
-          Tip: rename to images/ejpt-2026.png and update the src below
-        -->
         <img class="port-card-img" src="images/eJPT (eLearnSecurity Junior Penetration Tester) 2026.png" alt="eJPT 2026"/>
         <div class="port-card-body">
           <div class="port-card-title">eJPT (eLearnSecurity Junior Penetration Tester) 2026</div>
@@ -407,9 +382,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/ISC2 Certified in Cybersecurity 2025.png
-        -->
         <img class="port-card-img" src="images/ISC2 Certified in Cybersecurity 2025.png" alt="ISC2 CC 2025"/>
         <div class="port-card-body">
           <div class="port-card-title">ISC2 Certified in Cybersecurity 2025</div>
@@ -418,9 +390,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Fortinet Certified Fundamentals in Cybersecurity 2024.png
-        -->
         <img class="port-card-img" src="images/Fortinet Certified Fundamentals in Cybersecurity 2024.png" alt="Fortinet 2024"/>
         <div class="port-card-body">
           <div class="port-card-title">Fortinet Certified Fundamentals in Cybersecurity 2024</div>
@@ -429,9 +398,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Networking Essentials 2024.png
-        -->
         <img class="port-card-img" src="images/Networking Essentials 2024.png" alt="Networking Essentials 2024"/>
         <div class="port-card-body">
           <div class="port-card-title">Networking Essentials 2024</div>
@@ -440,9 +406,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Director's List 2024.png
-        -->
         <img class="port-card-img" src="images/Director's List 2024.png" alt="Director's List 2024"/>
         <div class="port-card-body">
           <div class="port-card-title">Director's List 2024</div>
@@ -451,9 +414,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/ITE Higher Nitec In Cyber & Network Security (3 Years) 2024-2026.jpg
-        -->
         <img class="port-card-img" src="images/ITE Higher Nitec In Cyber & Network Security (3 Years) 2024-2026.jpg" alt="ITE Higher Nitec"/>
         <div class="port-card-body">
           <div class="port-card-title">ITE Higher Nitec In Cyber &amp; Network Security (3 Years) 2024–2026</div>
@@ -461,16 +421,10 @@
         </div>
       </div>
 
-    </div><!-- end cert grid -->
-
-    <!-- PC BUILD -->
-    <div class="port-section-title">PC Build</div>
+    </div><div class="port-section-title">PC Build</div>
     <div class="port-grid">
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/PC Build (built on 2026 May).jpg
-        -->
         <img class="port-card-img tall" src="images/PC Build (built on 2026 May).jpg" alt="PC Build"/>
         <div class="port-card-body">
           <div class="port-card-title">PC Build (built on 2026 May)</div>
@@ -488,9 +442,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/HYTE Y70 Case.jpg
-        -->
         <img class="port-card-img tall" src="images/HYTE Y70 Case.jpg" alt="HYTE Y70 Case"/>
         <div class="port-card-body">
           <div class="port-card-title">HYTE Y70 Case</div>
@@ -500,17 +451,10 @@
 
     </div>
 
-    <!-- EVENTS & CTF -->
     <div class="port-section-title">Events &amp; CTF Competitions</div>
     <div class="port-grid">
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Black Hat Asia 2025.png
-          This image is still on Wix CDN — download it from:
-          https://static.wixstatic.com/media/5b8802_c862f77f52de4de9956327c9e63a901b~mv2.png
-          Save as: images/Black Hat Asia 2025.png
-        -->
         <img class="port-card-img" src="images/Black Hat Asia 2025.png"
              onerror="this.src='https://static.wixstatic.com/media/5b8802_c862f77f52de4de9956327c9e63a901b~mv2.png'"
              alt="Black Hat Asia 2025"/>
@@ -521,10 +465,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Snyk Fetch the Flag 2025.jpg
-          Download from: https://static.wixstatic.com/media/5b8802_8b0ec343341a4365afc4fc2f0d34398d~mv2.jpg
-        -->
         <img class="port-card-img" src="images/Snyk Fetch the Flag 2025.jpg"
              onerror="this.src='https://static.wixstatic.com/media/5b8802_8b0ec343341a4365afc4fc2f0d34398d~mv2.jpg'"
              alt="Snyk Fetch the Flag 2025"/>
@@ -535,10 +475,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/picoCTF 2025.png
-          Download from: https://static.wixstatic.com/media/5b8802_6f55617ae00145fbb642b8088162c1d8~mv2.png
-        -->
         <img class="port-card-img" src="images/picoCTF 2025.png"
              onerror="this.src='https://static.wixstatic.com/media/5b8802_6f55617ae00145fbb642b8088162c1d8~mv2.png'"
              alt="picoCTF 2025"/>
@@ -549,10 +485,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/picoCTF 2026.png
-          Download from: https://static.wixstatic.com/media/5b8802_51ca109c70ac417ab595497a145c31d5~mv2.png
-        -->
         <img class="port-card-img" src="images/picoCTF 2026.png"
              onerror="this.src='https://static.wixstatic.com/media/5b8802_51ca109c70ac417ab595497a145c31d5~mv2.png'"
              alt="picoCTF 2026"/>
@@ -564,15 +496,10 @@
 
     </div>
 
-    <!-- ACADEMIC AWARDS -->
     <div class="port-section-title">Academic Awards</div>
     <div class="port-grid">
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Edusave Scholarship 2023.jpg
-          Download from: https://static.wixstatic.com/media/5b8802_264c658a2a9344faa22d55c382a45306~mv2.jpg
-        -->
         <img class="port-card-img tall" src="images/Edusave Scholarship 2023.jpg"
              onerror="this.src='https://static.wixstatic.com/media/5b8802_264c658a2a9344faa22d55c382a45306~mv2.jpg'"
              alt="Edusave Scholarship 2023"/>
@@ -583,10 +510,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/EDUSAVE CERTIFICATE OF ACADEMIC ACHIEVEMENT 2025.jpg
-          Download from: https://static.wixstatic.com/media/5b8802_82f535dc4e384039b61605fc4cdade91~mv2.jpg
-        -->
         <img class="port-card-img tall" src="images/EDUSAVE CERTIFICATE OF ACADEMIC ACHIEVEMENT 2025.jpg"
              onerror="this.src='https://static.wixstatic.com/media/5b8802_82f535dc4e384039b61605fc4cdade91~mv2.jpg'"
              alt="Edusave CoAA 2025"/>
@@ -597,9 +520,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/EDUSAVE CERTIFICATE OF ACADEMIC ACHIEVEMENT 2024.jpg
-        -->
         <img class="port-card-img tall" src="images/EDUSAVE CERTIFICATE OF ACADEMIC ACHIEVEMENT 2024.jpg" alt="Edusave CoAA 2024"/>
         <div class="port-card-body">
           <div class="port-card-title">Edusave Certificate of Academic Achievement 2024</div>
@@ -608,9 +528,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/EDUSAVE CERTIFICATE OF ACADEMIC ACHIEVEMENT 2022.jpg
-        -->
         <img class="port-card-img tall" src="images/EDUSAVE CERTIFICATE OF ACADEMIC ACHIEVEMENT 2022.jpg" alt="Edusave CoAA 2022"/>
         <div class="port-card-body">
           <div class="port-card-title">Edusave Certificate of Academic Achievement 2022</div>
@@ -619,9 +536,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/Edusave Merit Bursary 2024.jpg
-        -->
         <img class="port-card-img" src="images/Edusave Merit Bursary 2024.jpg" alt="Edusave Merit Bursary 2024"/>
         <div class="port-card-body">
           <div class="port-card-title">Edusave Merit Bursary 2024</div>
@@ -630,9 +544,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/GOLD AWARD  STUDENT LEADERS AWARD 2023.jpg
-        -->
         <img class="port-card-img" src="images/GOLD AWARD  STUDENT LEADERS AWARD 2023.jpg" alt="Student Leaders Award 2023"/>
         <div class="port-card-body">
           <div class="port-card-title">Gold Award — Student Leaders Award 2023</div>
@@ -641,9 +552,6 @@
       </div>
 
       <div class="port-card">
-        <!--
-          ⚠ IMAGE: images/GOLD AWARD COLOURS AWARD 2023 NCC.jpg
-        -->
         <img class="port-card-img" src="images/GOLD AWARD COLOURS AWARD 2023 NCC.jpg" alt="NCC Colours Award 2023"/>
         <div class="port-card-body">
           <div class="port-card-title">Gold Award — NCC Colours Award 2023</div>
@@ -651,14 +559,7 @@
         </div>
       </div>
 
-    </div><!-- end academic grid -->
-
-  </div><!-- port-inner -->
-</div><!-- end portfolio -->
-
-
-<!-- ════════════ FOOTER ════════════ -->
-<footer>
+    </div></div></div><footer>
   <div class="logo-wrap" onclick="showPage('home')" style="margin-right:.5rem">
     <svg width="32" height="32" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
       <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#0d1e3a" stroke-width="2.5"/>
@@ -667,25 +568,21 @@
     </svg>
   </div>
 
-  <!-- Instagram -->
   <a href="https://www.instagram.com/chan_wei_keats?igsh=ZXcyYzFoczBuY255&utm_source=qr"
      target="_blank" class="soc soc-ig" title="Instagram">
     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
   </a>
 
-  <!-- LinkedIn -->
   <a href="https://www.linkedin.com/in/lin-82627273537364837sk/"
      target="_blank" class="soc soc-li" title="LinkedIn">
     <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>
   </a>
 
-  <!-- Credly -->
   <a href="https://www.credly.com/users/lin-jun-ji/badges"
      target="_blank" class="soc soc-cr" title="Credly">
     <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm.5 14.5a5 5 0 1 1 0-10 5 5 0 0 1 3.536 1.464l-1.415 1.415a3 3 0 1 0 0 4.242l1.415 1.415A5 5 0 0 1 12.5 16.5z"/></svg>
   </a>
 
-  <!-- Accredible -->
   <a href="https://www.credential.net/80b07fed-1ebe-471b-903d-b834ccb3839e#acc.7Cy08bYr"
      target="_blank" class="soc soc-ac" title="Accredible">
     <svg viewBox="0 0 24 24"><path d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V6L12 2zm-1 13l-4-4 1.41-1.41L11 12.17l6.59-6.58L19 7l-8 8z"/></svg>
@@ -705,3 +602,5 @@
 
 </body>
 </html>
+
+```
