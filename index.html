@@ -110,6 +110,37 @@
     }
     .mission-block p{font-size:1.05rem;line-height:1.9;color:var(--muted)}
 
+    /* Dark Mission Block */
+    .mission-dark-block{
+      display:flex;align-items:center;gap:3.5rem;
+      background:#0d1e3a;border-radius:10px;
+      padding:3rem 3.5rem;margin-bottom:2.5rem;
+    }
+    .mission-photo{
+      width:200px;height:250px;object-fit:cover;object-position:top;
+      border-radius:4px;flex-shrink:0;display:block;
+    }
+    .mission-text-col{flex:1}
+    .mission-heading{
+      font-size:2.6rem;font-weight:800;color:var(--teal);
+      letter-spacing:.05em;margin-bottom:.5rem;
+    }
+    .mission-divider{
+      width:60px;height:2px;background:var(--teal);
+      margin-bottom:1rem;
+    }
+    .mission-sub-label{
+      font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+      color:rgba(255,255,255,.65);margin-bottom:1.1rem;
+    }
+    .mission-body{
+      font-size:1rem;line-height:1.9;color:rgba(255,255,255,.82);
+    }
+    @media(max-width:720px){
+      .mission-dark-block{flex-direction:column;padding:2rem 1.5rem;gap:2rem}
+      .mission-photo{width:160px;height:200px}
+    }
+
     /* Experience */
     .section-head{
       font-size:1.6rem;font-weight:700;color:var(--dark);
@@ -285,14 +316,14 @@
 <div class="page" id="page-about">
   <div class="page-inner">
 
-    <div style="text-align:center;margin-bottom:25px;">
-<img src="images/linjunji.jpg" alt="Lin Jun Ji" style="width:220px;max-width:100%;border-radius:8px;object-fit:cover;"/>
-</div>
-
-<div class="mission-block">
-      <div class="mission-tag">MISSION</div>
-      <div class="mission-sub">[PASSION]</div>
-      <p>I am Lin Jun Ji, a Cybersecurity student at ITE Higher Nitec specializing in network defense and ethical hacking. My expertise spans from foundational security protocols to advanced threat intelligence, driven by a commitment to technical excellence. I focus on optimizing digital perimeters and safeguarding global infrastructure, transforming complex security challenges into robust solutions for a safer digital world.</p>
+    <div class="mission-dark-block">
+      <img src="images/linjunji.jpg" alt="Lin Jun Ji" class="mission-photo"/>
+      <div class="mission-text-col">
+        <div class="mission-heading">MISSION</div>
+        <div class="mission-divider"></div>
+        <div class="mission-sub-label">[PASSION]</div>
+        <p class="mission-body">I am Lin Jun Ji, a Cybersecurity student at ITE Higher Nitec specializing in network defense and ethical hacking. My expertise spans from foundational security protocols to advanced threat intelligence, driven by a commitment to technical excellence. I focus on optimizing digital perimeters and safeguarding global infrastructure, transforming complex security challenges into robust solutions for a safer digital world.</p>
+      </div>
     </div>
 
     <!-- EXPERIENCE -->
